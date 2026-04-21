@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>File Organizer & Cleaner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>File Organizer & Cleaner</h1>
+      <p>Type file names and instantly see where they would go.</p>
+    </section>
+
+    <section class="app-card">
+      <label for="fileList">File names (comma-separated)</label>
+      <textarea id="fileList" placeholder="e.g. photo.jpg, notes.txt, report.pdf"></textarea>
+
+      <button id="runButton">Organize</button>
+
+      <div id="resultArea" class="result-area">Enter some file names and press Organize.</div>
+    </section>
+
+    <section class="notice">
+      <strong>Note:</strong> This demo shows categorization only. Use <code>organizer.js</code> for real filesystem moves.
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

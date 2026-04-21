@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f4f6fc;color:#102a43;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:24px}
+.container{width:min(760px,100%);}
+.hero{text-align:center;margin-bottom:20px;}
+.hero h1{font-size:2rem;margin-bottom:8px;color:#102a43;}
+.hero p{color:#334e68;font-size:1rem;}
+.app-card{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(16,42,67,.12);padding:20px;}
+label{display:block;font-weight:600;margin-bottom:8px;color:#334e68}
+textarea{width:100%;height:100px;border:1px solid #bcccdc;border-radius:10px;padding:12px;font-size:1rem;color:#102a43;resize:vertical}
+button{margin:14px 0 10px;width:100%;background:#1f57d8;color:#fff;border:none;border-radius:10px;padding:12px;font-size:1rem;cursor:pointer;transition:.2s}
+button:hover{background:#153ab0}
+.result-area{min-height:130px;padding:12px;border:1px solid #d6e4ff;border-radius:10px;background:#f7faff;white-space:pre-wrap;color:#1d3557;}
+.notice{margin-top:14px;padding:10px 12px;background:#eaf4ff;border:1px solid #b8d8ff;border-radius:10px;color:#0b3f9f;font-size:.93rem}
+code{background:#e8f0ff;padding:2px 5px;border-radius:4px;color:#1b49a1}
+
