@@ -80,16 +80,7 @@ function scanAndOrganize(directory, options) {
 
     const ext = getExtension(entry.name);
     const category = getCategory(ext);
-    let targetDir = path.join(directory, options.destinationFolder, category);
-
-    // For documents, try to create subfolders based on filename pattern
-    if (category === 'documents') {
-      const pattern = extractPattern(entry.name);
-      if (pattern) {
-        targetDir = path.join(directory, options.destinationFolder, category, pattern);
-      }
-    }
-
+    const targetDir = path.join(directory, options.destinationFolder, category);
     const targetPath = path.join(targetDir, entry.name);
 
     ensureDirExists(targetDir);
