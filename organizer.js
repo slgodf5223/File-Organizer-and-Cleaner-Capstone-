@@ -59,8 +59,17 @@ function moveFile(src, dest, dryRun) {
   console.log(`Moved: ${src} -> ${finalDest}`);
 }
 
+function hasFiles(dirPath) {
+  try {
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+    return entries.some(entry => entry.isFile());
+  } catch {
+    return false;
+  }
+}
+
 function scanAndOrganize(directory, options) {
-  const { dryRun, recursive } = options;
+  const { dryRun, recursive, skipPopulated } = options;
   const entries = fs.readdirSync(directory, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -68,6 +77,13 @@ function scanAndOrganize(directory, options) {
 
     if (entry.isDirectory()) {
       if (entry.name === options.destinationFolder) continue;
+      
+      // Skip folders that already contain files if flag is set
+      if (skipPopulated && hasFiles(fullPath)) {
+        console.log(`Skipped: ${fullPath} (already contains files)`);
+        continue;
+      }
+      
       if (recursive) {
         scanAndOrganize(fullPath, options);
       }
@@ -89,10 +105,11 @@ function scanAndOrganize(directory, options) {
 }
 
 function printUsage() {
-  console.log('Usage: node organizer.js <source_directory> [--recursive] [--dry-run] [--dest <folder>]');
-  console.log('  --recursive   : scan subdirectories recursively (default: disabled)');
-  console.log('  --dry-run     : show operations without moving files');
-  console.log('  --dest <name> : output folder name under source dir (default: organized)');
+  console.log('Usage: node organizer.js <source_directory> [--recursive] [--dry-run] [--dest <folder>] [--skip-populated]');
+  console.log('  --recursive       : scan subdirectories recursively (default: disabled)');
+  console.log('  --dry-run         : show operations without moving files');
+  console.log('  --dest <name>     : output folder name under source dir (default: organized)');
+  console.log('  --skip-populated  : skip folders that already contain files (default: disabled)');
 }
 
 function parseArgs(args) {
@@ -105,6 +122,7 @@ function parseArgs(args) {
     source: args[0],
     recursive: false,
     dryRun: false,
+    skipPopulated: false,
     destinationFolder: 'organized',
   };
 
@@ -116,6 +134,9 @@ function parseArgs(args) {
       i += 1;
     } else if (arg === '--dry-run') {
       options.dryRun = true;
+      i += 1;
+    } else if (arg === '--skip-populated') {
+      options.skipPopulated = true;
       i += 1;
     } else if (arg === '--dest') {
       if (i + 1 >= args.length) {
