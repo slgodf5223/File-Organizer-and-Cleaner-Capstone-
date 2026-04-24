@@ -1,28 +1,28 @@
 Plan: Run File Organizer on Your Personal Directory
 TL;DR: Use the Node.js CLI (organizer.js) to scan and organize files in any directory. Run it via terminal with a dry-run first to preview changes safely, then run without --dry-run to actually move files.
 
-                                Steps
+_________________________________________________Steps___________________________________________________
 
-Open a terminal in your system (Windows PowerShell or Command Prompt)
+Step1: In this terminal, type; " node -v "
+    The system should reply back with v20.x.x or v24.14.x (just different versions of Node). If the system does not return the above, you need to download Node.js into you Visual Studio or other software. 
 
-Navigate to the project folder
+Step 2: Open Powershell on your windows device
 
-Test with dry-run first (see what would happen without moving files):
+Step 3: You need to call the organizer.js file. If your not sure find the file and hit ' copy path ' 
+    so you now have the location. In power shell type the following command; " cd (Paste_Path_Here) " .
+    An example would be the following " cd Desktop/File-Organizer-and-Cleaner-Capstone- " .
 
-Replace YourName with your actual username. Add --recursive if you want subfolders included:
+Step 4: Choose your directory that you would lik to be organized. An example may be your desktop or downloads.
 
-Run the organizer for real (once you approve the dry-run preview):
+Step 5: Do a dry run so you can see what wil happen. THIS WILL NOT MOVE ANYTHING. Type the following comand into  Powershell;  node organizer.js "Paste_Path_Here" --recursive --dest "MyOrganizedFiles" --dry-run
 
-This creates an organized folder inside Downloads and moves files into categories (images, documents, audio, code, others)
+Step 6: Verify that the organization is what you would like. If so you may then insert the following comand which will move and organize files;  node organizer.js "Paste_Path_Here" --recursive -dest "MyOrganizedFiles"
 
-node organizer.js "C:\Users\YourName\Downloads" --recursive --dest "MyOrganizedFiles"
+_____________________________________________NOTES WHEN RUNNING____________________________________________
 
-                        Relevant files
+* You are inside the folder that has organized.js To double check input " dir " and you should see organized.js selected.
 
-organizer.js — Core logic; defines file categories and handles scanning/moving
-                        Verification
+* If the intent is to organize your desktop or any other directory that already has files organized, the code will not alter pre existing organized files. 
 
-Run with --dry-run and review the console output to confirm files are being categorized correctly
-Check that subfolder organization looks right (images → images/, documents → documents/, etc.)
-Run without --dry-run and verify the organized folder was created with proper subfolders
+* Make sure when running commands that there are no prexisting commands that are attempting to run or the command will not work. To make sure you can end all on going commands with ^C
 
