@@ -14,9 +14,13 @@ Step 3: You need to call the organizer.js file. If your not sure find the file a
 
 Step 4: Choose your directory that you would lik to be organized. An example may be your desktop or downloads.
 
-Step 5: Do a dry run so you can see what wil happen. THIS WILL NOT MOVE ANYTHING. Type the following comand into  Powershell;  node organizer.js "Paste_Path_Here" --recursive --dest "MyOrganizedFiles" --dry-run
+Step 5A: Do a dry run so you can see what wil happen. THIS WILL NOT MOVE ANYTHING. Type the following comand into  Powershell;  node organizer.js "Paste_Path_Here" --recursive --dest "MyOrganizedFiles" --dry-run
 
-Step 6: Verify that the organization is what you would like. If so you may then insert the following comand which will move and organize files;  node organizer.js "Paste_Path_Here" --recursive -dest "MyOrganizedFiles"
+Step 5B: If you would like your pre-existing files NOT to be touched use this prompt as the dry run instead; node organizer.js "Paste_Path_Here" --skip-populated --dry-run
+
+Step 6A: Verify that the organization is what you would like. If so you may then insert the following comand which will move and organize files;  node organizer.js "Paste_Path_Here" --recursive -dest "MyOrganizedFiles"
+
+Step 6B: If you would like your prexisitng files not not be moved instead of following 'Step 6A'command prompt, follow this instead;   node organizer.js "Paste_Path_Here" --skip-populated
 
 _____________________________________________NOTES WHEN RUNNING____________________________________________
 
@@ -24,5 +28,7 @@ _____________________________________________NOTES WHEN RUNNING_________________
 
 * If the intent is to organize your desktop or any other directory that already has files organized, the code will not alter pre existing organized files. 
 
-* Make sure when running commands that there are no prexisting commands that are attempting to run or the command will not work. To make sure you can end all on going commands with ^C
+* Make sure when running commands that there are no prexisting commands that are attempting to run or the command will not work. To make sure you can end all on going commands with pressing ctrl and C.
+
+* Make sure when attempting to organize files, all files are closed and not opened or you will recieve an error message. 
 
